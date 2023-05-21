@@ -1,7 +1,11 @@
 <?php
-
+use App\Http\Models;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HabitController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
+use Illuminate\Database\Eloquent\Collection;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/habit', [HabitController::class, 'index']);
+
+Route::get('/event', [EventController::class, 'index']);
+
+Route::get('/task', [TaskController::class, 'index']);
+
+Route::get('/users', [UserController::class, 'index']);
