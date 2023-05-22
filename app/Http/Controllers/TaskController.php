@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function index(){
-        $tasks= Task::all();
+        $tasks= auth()->user()->tasks;
         return view('task', compact('tasks'));
     }
 }

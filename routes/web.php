@@ -1,6 +1,7 @@
 <?php
 use App\Http\Models;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\HabitController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TaskController;
@@ -17,10 +18,8 @@ use Illuminate\Database\Eloquent\Collection;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/', [Controller::class, 'index']);
+Auth::routes();
 Route::get('/habit', [HabitController::class, 'index']);
 
 Route::get('/event', [EventController::class, 'index']);
@@ -28,3 +27,5 @@ Route::get('/event', [EventController::class, 'index']);
 Route::get('/task', [TaskController::class, 'index']);
 
 Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
