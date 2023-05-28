@@ -17,7 +17,12 @@
                             <tr>
                             <td><?= $event->title ?></td></tr>
                         <?php endforeach; ?>
-                    </table>  
+                    </table> 
+                <div class="row justify-content-center mt-3">
+                <div class="col-md-8 offset-md-4">
+                    <a href="{{ route('event.createform') }}" class="btn btn-primary">Add Event</a>
+                </div>
+            </div> 
 </div>
 </div>
 </div>
