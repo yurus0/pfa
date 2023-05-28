@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('streak');
+            $table->integer('streak')->default(0);
             $table->enum('category', ['work', 'personal', 'hobby']);
             $table->enum('frequency', ['daily', 'weekly', 'monthly']);
             $table->enum('status', ['done', 'pending']);

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('category');
             $table->enum('status', ['done', 'pending']);
-            $table->date('deadline');
+            $table->date('deadline_date');
+            $table->time('deadline_time');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('event_id')->constrained();
             $table->timestamps();

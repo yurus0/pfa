@@ -20,12 +20,18 @@ use Illuminate\Database\Eloquent\Collection;
 
 Route::get('/', [Controller::class, 'index']);
 Auth::routes();
-Route::get('/habit', [HabitController::class, 'index']);
+Route::get('/habit', [HabitController::class, 'index'])->name('habit');
 
-Route::get('/event', [EventController::class, 'index']);
+Route::get('/event', [EventController::class, 'index'])->name('event');
 
-Route::get('/task', [TaskController::class, 'index']);
+Route::get('/task', [TaskController::class, 'index'])->name('task');
 
 Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/habit/createform', [App\Http\Controllers\HabitController::class, 'createform'])->name('habit.createform');
+Route::get('habit/create', [App\Http\Controllers\HabitController::class, 'create'])->name('habit.create');
+Route::get('/event/createform', [App\Http\Controllers\EventController::class, 'createform'])->name('event.createform');
+Route::get('event/create', [App\Http\Controllers\EventController::class, 'create'])->name('event.create');
+Route::get('/task/createform', [App\Http\Controllers\TaskController::class, 'createform'])->name('task.createform');
+Route::get('task/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');

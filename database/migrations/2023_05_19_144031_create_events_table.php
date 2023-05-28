@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('date_time');
+            $table->date('date');
+            $table->time('time');
             $table->string('location');
             $table->enum('status', ['done', 'pending']);
             $table->foreignId('user_id')->constrained();

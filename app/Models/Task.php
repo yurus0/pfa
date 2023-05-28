@@ -8,10 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
+    public $fillable=[
+        'title',
+        'description',
+        'category',
+        'status',
+        'deadline',
+    ];
+    private $user_id, $id, $event_id;
     public function user(){
         return $this->belongsTo(User::class);
     }
     public function event(){
         return $this->belongsTo(Event::class);
     }
+    
 }
