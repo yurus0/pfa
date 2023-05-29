@@ -8,10 +8,10 @@ class EventController extends Controller
 {
     public function index() {
         $events=auth()->user()->events;
-        return view('event', compact('events'));
+        return view('events.all', compact('events'));
     }
     public function createform(){
-        return view('createevent');
+        return view('events.createform');
     }
     public function create(Request $request){
         $event= new Event();
@@ -24,5 +24,10 @@ class EventController extends Controller
         $event->status='pending';
         $event->save();
         return redirect()->route('event');
+    }
+    public function destroy($id){
+        $event=Event::FindOrFail($id);
+        $event->delete();
+        return redirect()->back();
     }
 }

@@ -8,18 +8,18 @@ class TaskController extends Controller
 {
     public function index(){
         $tasks= auth()->user()->tasks;
-        return view('task', compact('tasks'));
+        return view('tasks.all', compact('tasks'));
     }
     public function createform(){
-        return view('createtask');
+        return view('tasks.createform');
     }
     public function create(Request $request){
         $task= new Task();
         $task->user_id=auth()->user()->id;
         $task->name=$request->input('name');
         $task->description=$request->input('description');
-        $task->deadline_date=$request->input('deadline date');
-        $task->deadline_time=$request->input('deadline time');
+        $task->deadline_date=$request->input('deadline_date');
+        $task->deadline_time=$request->input('deadline_time');
         $task->completed=$request->input('completed');
         $task->save();
         return redirect()->route('task');

@@ -8,10 +8,10 @@ class HabitController extends Controller
 {
     public function index(){
         $habits= auth()->user()->habits;
-        return view('habit', compact('habits'));
+        return view('habits.all', compact('habits'));
     }
     public function createform(){
-        return view('createhabit');
+        return view('habits.createform');
     }
     public function create(Request $request){
         $habit= new Habit();
@@ -24,5 +24,10 @@ class HabitController extends Controller
         $habit->streak=0;
         $habit->save();
         return redirect()->route('habit');
+    }
+    public function destroy($id){
+        $habit=Habit::FindOrFail($id);
+        $habit->delete();
+        return redirect()->back();
     }
 }
