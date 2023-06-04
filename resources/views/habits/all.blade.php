@@ -10,7 +10,7 @@
                 <div class="col-md-8">
                     <h1>All habits</h1>
                     <div class="card">
-                        <table><tr class="card-header"><td></td><td>Habit Title</td><td>Description</td><td></td></tr>
+                        <table><tr class="card-header"><td></td><td>Habit Title</td><td>Description</td><td></td><td></td></tr>
                         <div class="card-body">
                                 
                                 @foreach ($habits as $habit)
@@ -20,6 +20,12 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
+                            </form></td>
+                            <td>
+                                @csrf
+                                @method('GET')
+                                <form action="{{ route('habit.updateform', $habit->id) }}" method="GET">
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form></td>
                                     </tr>
                                 @endforeach

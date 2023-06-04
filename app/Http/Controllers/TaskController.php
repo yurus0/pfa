@@ -16,11 +16,20 @@ class TaskController extends Controller
     public function create(Request $request){
         $task= new Task();
         $task->user_id=auth()->user()->id;
-        $task->name=$request->input('name');
+        $task->title=$request->input('title');
         $task->description=$request->input('description');
+        $task->category=$request->input('category');
         $task->deadline_date=$request->input('deadline_date');
         $task->deadline_time=$request->input('deadline_time');
-        $task->completed=$request->input('completed');
+        $completed=$request->input('completed');
+        if($completed==null){
+            $completed='pending';
+        }
+        else{
+            $completed='done';
+        }
+        $task->status=$completed;
+        $task->event_id=null;
         $task->save();
         return redirect()->route('task');
     }

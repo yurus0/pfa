@@ -30,13 +30,19 @@ Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/habit/createform', [App\Http\Controllers\HabitController::class, 'createform'])->name('habit.createform');
-Route::get('habit/create', [App\Http\Controllers\HabitController::class, 'create'])->name('habit.create');
+Route::get('/habit/create', [App\Http\Controllers\HabitController::class, 'create'])->name('habit.create');
 Route::delete('/habit/{id}', [App\Http\Controllers\HabitController::class, 'destroy'])->name('habit.destroy');
-Route::put('/habits/{id}', [App\Http\Controllers\HabitController::class, 'updates'])->name('habits.update');
+
+Route::get('/habit/updateform/{id}', [App\Http\Controllers\HabitController::class, 'updateform'])->name('habit.updateform');
+
+Route::get('/habit/update/{id}', [App\Http\Controllers\HabitController::class, 'update'])->name('habit.update');
+
 
 Route::get('/event/createform', [App\Http\Controllers\EventController::class, 'createform'])->name('event.createform');
-Route::get('event/create', [App\Http\Controllers\EventController::class, 'create'])->name('event.create');
+Route::get('/event/create', [App\Http\Controllers\EventController::class, 'create'])->name('event.create');
 Route::delete('/event/{id}', [App\Http\Controllers\EventController::class, 'destroy'])->name('event.destroy');
+Route::get('/event/updateform/{id}', [App\Http\Controllers\EventController::class, 'updateform'])->name('event.updateform');
+Route::get('/event/update/{id}', [App\Http\Controllers\EventController::class, 'update'])->name('event.update');
 
 Route::get('/task/createform', [App\Http\Controllers\TaskController::class, 'createform'])->name('task.createform');
-Route::get('task/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
+Route::get('/task/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');

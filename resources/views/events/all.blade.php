@@ -11,7 +11,7 @@
             <h1>All events</h1>
             <div class="card">
                 <table>
-                <tr class="card-header"><td></td><td>Event Title</td><td>Description</td><td></td>
+                <tr class="card-header"><td></td><td>Event Title</td><td>Description</td><td></td><td></td>
                 </tr>
                 <div class="card-body">
                         @foreach ($events as $event)
@@ -21,6 +21,10 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
+                            </form></td><td> <form action="{{ route('event.updateform', $event->id) }}" method="GET">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form></td>
                         </tr>
                         @endforeach

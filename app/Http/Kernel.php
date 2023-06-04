@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Models\Habit;
 
 class Kernel extends HttpKernel
 {
@@ -64,4 +65,19 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+    protected function schedule(Schedule $schedule){
+        $schedule->call(function(){
+        // Get all users
+        $users = User::all();
+        
+        // Update the streak for habits of each user
+        foreach ($users as $user) {
+            $habits = $user->habits()->where('last_updated', '<', Carbon::now()->subDay())->get();
+
+            foreach ($habits as $habit) {
+                $habit->updateStreak();
+            }
+        }
+        })->daily();
+    }
 }

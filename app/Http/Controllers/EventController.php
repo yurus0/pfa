@@ -30,4 +30,33 @@ class EventController extends Controller
         $event->delete();
         return redirect()->back();
     }
+    //update form
+    public function updateform($id){
+        $event=Event::FindOrFail($id);
+        return view('events.updateform', compact('event'));
+    }
+    //update event
+    public function update($id, Request $request){
+        $event=Event::FindOrFail($id);
+        $title=$request->input('title');
+        $description=$request->input('description');
+        $date=$request->input('date');
+        $time=$request->input('time');
+        $location=$request->input('location');
+        $status=$request->input('status');
+        if($status==null){
+            $status='pending';
+        }
+        else{
+            $status='done';
+        }
+        $event->title=$title;
+        $event->description=$description;
+        $event->date=$date;
+        $event->time=$time;
+        $event->location=$location;
+        $event->status=$status;
+        $event->save();
+        return redirect()->route('event');
+    }
 }

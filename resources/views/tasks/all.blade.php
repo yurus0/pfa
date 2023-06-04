@@ -13,10 +13,10 @@
                 <div class="card-header"><b>Task Title</b></div>
                 <div class="card-body">
                     <table>
-                        <?php foreach ($tasks as $task): ?>
+                        @foreach ($tasks as $task)
                             <tr>
-                            <td><?= $task->title ?></td></tr>
-                        <?php endforeach; ?>
+                            <td>{{$task->title}}</td></tr>
+                        @endforeach 
                     </table>
                     <div class="row justify-content-center mt-3">
                 <div class="col-md-8 offset-md-4">
