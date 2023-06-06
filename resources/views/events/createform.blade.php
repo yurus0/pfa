@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Add Event') }}</div>
 
                 <div class="card-body">
-                    <form method="GET" action="{{ route('event.create') }}">
+                    <form method="POST" action="{{ route('event.create') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -39,6 +39,30 @@
                             <label for="location" class="col-md-4 col-form-label text-md-end">{{ __('Location') }}</label>
                         <div class="col-md-6">
                             <input id="location" type="location" class="form-control @error('location') is-invalid @enderror" name="location" required autocomplete="location">
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-end">{{ __('Category') }}</label>
+                        <div class="col-md-6">
+                        <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choose one...
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                            <a class="dropdown-item" href="#" onclick="selectCategory(1)">work</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(2)">hobby</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(3)">personal</a>
+                        </div>
+                            <input type="hidden" id="categoryInput" name="category_id">
+                        </div>
+
+                        <script>
+                            function selectCategory(category) {
+                                document.getElementById('categoryDropdown').textContent = category;
+                                document.getElementById('categoryInput').value = category;
+                            }
+                        </script>
+                        
                         </div>
                         </div>
                         <div class="row mb-0">
