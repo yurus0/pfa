@@ -13,7 +13,7 @@
             <table>
                 <div class="card-body">
                     <tr class="card-header"><td></td><td>Task Title</td><td>Description</td><td></td><td></td></tr>
-                        @foreach ($tasks as $task)
+                        @foreach ($tasksbycateg as $task)
                         <tr><td></td> <td>{{$task->title}}</td><td>{{ $task->description }}</td>
                             <td><form action="{{ route('task.destroy', $task->id) }}" method="POST">
                                 @csrf

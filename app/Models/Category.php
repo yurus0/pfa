@@ -5,25 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Category extends Model
 {
     use HasFactory;
+    private $id;
     public $fillable = [
-        'title',
-        'description',
-        'date',
-        'time',
-        'location',
-        'status',
+        'name',
     ];
-    private $user_id, $id, $category_id;
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function habits(){
+        return $this->hasMany(Habit::class);
     }
     public function tasks(){
         return $this->hasMany(Task::class);
     }
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function events(){
+        return $this->hasMany(Event::class);
     }
 }

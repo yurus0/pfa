@@ -27,14 +27,14 @@
                         <div class="col-md-6">
                         <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ old('category', $habit->category) ?: 'Choose one...' }}
+                        {{ old('category', $habit->category_id) ? $habit->category_id: 'Choose one...' }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                            <a class="dropdown-item" href="#" onclick="selectCategory('work')">work</a>
-                            <a class="dropdown-item" href="#" onclick="selectCategory('hobby')">hobby</a>
-                            <a class="dropdown-item" href="#" onclick="selectCategory('personal')">personal</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(1)">work</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(2)">hobby</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(3)">personal</a>
                         </div>
-                            <input type="hidden" id="categoryInput" name="category" value="{{ old('category', $habit->category) }}">
+                            <input type="hidden" id="categoryInput" name="category_id" value="{{ old('category_id', $habit->category_id) }}">
                         </div>
 
                         <script>
@@ -74,7 +74,7 @@
                             <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
                         <div class="col-md-6">
                             <div class="form-check">
-                                <input id="status" type="checkbox" class="form-check-input @error('status') is-invalid @enderror" name="status" value="0" {{ old('status', $habit->status) === 'done' ? 'checked' : '' }}>
+                                <input id="status" type="checkbox" class="form-check-input @error('status') is-invalid @enderror" name="status" value=" {{ old('status', $habit->status) === 'done' ? 'checked' : '' }}">
                                 <label for="status" class="form-check-label">Done</label>
                             </div>
                             @error('status')

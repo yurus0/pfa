@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Add Habit') }}</div>
 
                 <div class="card-body">
-                    <form method="GET" action="{{ route('habit.create') }}">
+                    <form method="POST" action="{{ route('habit.create') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
@@ -30,11 +30,11 @@
                             Choose one...
                         </button>
                         <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                            <a class="dropdown-item" href="#" onclick="selectCategory('work')">work</a>
-                            <a class="dropdown-item" href="#" onclick="selectCategory('hobby')">hobby</a>
-                            <a class="dropdown-item" href="#" onclick="selectCategory('personal')">personal</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(1)">work</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(2)">hobby</a>
+                            <a class="dropdown-item" href="#" onclick="selectCategory(3)">personal</a>
                         </div>
-                            <input type="hidden" id="categoryInput" name="category">
+                            <input type="hidden" id="categoryInput" name="category_id">
                         </div>
 
                         <script>

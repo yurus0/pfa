@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Event::factory(10)->create();
-        \App\Models\Task::factory(10)->create();
-        \App\Models\Habit::factory(10)->create();
+        Category::create(['name' => 'Work']);
+        Category::create(['name' => 'Hobby']);
+        Category::create(['name' => 'Personal']);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

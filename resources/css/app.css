@@ -1,0 +1,22 @@
+@font-face {
+    font-family: sfpro_medium;
+    src: url(Fonts/SF-Pro-Text-Medium.otf);
+} 
+@font-face {
+    font-family: sfpro_semibold;
+    src: url(Fonts/SF-Pro-Text-Semibold.otf);
+}
+@font-face {
+    font-family: sfpro_regular;
+    src: url(Fonts/SF-Pro-Text-Regular.otf);
+}
+body{
+    font-family: sfpro_regular, sans-serif;
+    background-color: black;
+    align-items: center;
+    align-content: center;
+}
+#py-4{
+    background-color: black;
+    font-family: sfpro_regular, sans-serif;
+}

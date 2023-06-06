@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 class HabitController extends Controller
 {
     public function index(){
-        $habits= auth()->user()->habits;
+        $habits=auth()->user()->habits;
         return view('habits.all', compact('habits'));
+    }
+    public function habitsbycateg($category_id){
+        $habitsbycateg= auth()->user()->habits()->where('category_id', $category_id)->get();
+        return view('habits.bycateg', compact('habitsbycateg'));
     }
     //create form
     public function createform(){
@@ -20,7 +24,7 @@ class HabitController extends Controller
         $habit->user_id=auth()->user()->id;
         $habit->title=$request->input('title');
         $habit->description=$request->input('description');
-        $habit->category=$request->input('category');
+        $habit->category_id=$request->input('category_id');
         $habit->frequency=$request->input('frequency');
         $habit->status='pending';
         $habit->streak=0;
@@ -42,7 +46,7 @@ class HabitController extends Controller
     public function update($id, Request $request){
         $title=$request->input('title');
         $description=$request->input('description');
-        $category=$request->input('category');
+        $category_id=$request->input('category_id');
         $frequency=$request->input('frequency');
         $status=$request->input('status');
         if($status==null){
@@ -53,25 +57,23 @@ class HabitController extends Controller
         }
 
         $habit=Habit::FindOrFail($id);
-
+        if($status==='done'){
+            $habit->streak=1;
+        }
         $habit->title=$title;
         $habit->description=$description;
-        $habit->category=$category;
+        $habit->category_id=$category_id;
         $habit->frequency=$frequency;
         $habit->status=$status;
         $habit->save();
-        return redirect()->route('habit');
+        return redirect()->route('habit.bycateg', $habit->category_id);
     }
 
     /* update streak:*/
     public function updateStreak($id){
         $habit=Habit::FindOrFail($id);
-        $done=$habit->status;
-        if($done){
-            $habit->streak+=1;
-        }
-        else{
-            $habit->streak=0;
+        if($habit->status==='done'){
+            $habit->streak=1;
         }
     }
 

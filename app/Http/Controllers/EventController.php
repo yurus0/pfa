@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function index() {
+    public function index(){
         $events=auth()->user()->events;
         return view('events.all', compact('events'));
+    }
+    public function eventsbycateg($category_id) {
+        $eventsbycateg=auth()->user()->events()->where('category_id', $category_id)->get();
+        return view('events.bycateg', compact('eventsbycateg'));
     }
     public function createform(){
         return view('events.createform');
@@ -22,6 +26,7 @@ class EventController extends Controller
         $event->time= $request->input('time');
         $event->location=$request->input('location');
         $event->status='pending';
+        $event->category_id=$request->input('category_id');
         $event->save();
         return redirect()->route('event');
     }
@@ -56,6 +61,7 @@ class EventController extends Controller
         $event->time=$time;
         $event->location=$location;
         $event->status=$status;
+        $event->category_id=$request->input('category_id');
         $event->save();
         return redirect()->route('event');
     }
