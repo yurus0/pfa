@@ -3,9 +3,11 @@
 @section('content')
 <head>
     <title>home</title>
+
+    <link rel="stylesheet" href="app.css">
 </head>
-<body style="background-color: #000000;">
-    <div class="container">
+<body>
+    <div class="container-dark">
     <p style="color: #ffffffaf; text-transform: uppercase;">{{Carbon\Carbon::now()->format('l, d M')}}</p>
     <h1 style="color: #ffffff;">Summary</h1>
     <div class="card">
@@ -46,7 +48,7 @@
     </div>
     <div class="card-body">
     @foreach($awards as $award)
-    <li><a href="{{ url('/awards',$category->id ) }}">{{ $category->name }}</a></li>
+    <li><a href="{{ url('/awards',$category->id ) }}"> <img src="{{ asset('images/', $award->image) }}" alt="award-icon"><br>{{ $award->name }}</a></li>
     @endforeach
 </div>
 </div>

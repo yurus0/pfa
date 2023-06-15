@@ -14,12 +14,8 @@
     <link href="Fonts/SF-Pro-Text-Regular.otf" rel="stylesheet">
 
     <!-- Custom Styles -->
-    <style>
-        #container {
-            background-color: #000000; /* Replace with your desired background color */
-        }
-    </style>
 
+    <link rel="stylesheet" href="app.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
