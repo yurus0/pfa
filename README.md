@@ -23,6 +23,12 @@ On going coding...
 
 >
 **Awards**
+> ![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/welcome.png "welcome")
+>Welcome Award
 
-![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/welcome.png "welcome")
+>![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/selfcare.png "selfcare")
+>Selfcare Award
+
+>![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/workaholic.png "workaholic")
+>Workaholic Award
 
