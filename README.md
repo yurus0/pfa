@@ -14,7 +14,7 @@ On going coding...
 >
 **Welcome page**
 
-![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/welcome.png "welcome")
+![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/welcome1.png "welcome1")
 
 >
 **Dashboard page**
@@ -22,6 +22,7 @@ On going coding...
 ![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/dashboard.png "dashboard")
 
 >
-**Welcome page**
+**Awards**
 
 ![Alt text](https://github.com/yurus0/trackify-web/blob/main/public/images/welcome.png "welcome")
+
